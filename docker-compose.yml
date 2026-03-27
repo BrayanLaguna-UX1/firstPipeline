@@ -35,4 +35,3 @@ networks:
   backend_net:
     external: True
   frontend_net:
-    external: True
