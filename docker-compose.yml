@@ -1,0 +1,38 @@
+
+services:
+  db:
+    image: postgres
+    container_name: mydb
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: empresa
+    volumes:
+      - postvol:/var/lib/postgresql
+    networks:
+      - backend_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      retries: 5
+  backend:
+    image: docker_app-backend
+    container_name: myback
+    build: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - backend_net
+      - frontend_net
+
+volumes:
+  postvol:
+
+networks:
+  backend_net:
+    external: True
+  frontend_net:
+    external: True
