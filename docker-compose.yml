@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: empresa
     volumes:
-      - postvol:/var/lib/postgresql
+      - postvol:/var/lib/postgresql/data
     networks:
       - backend_net
     healthcheck:
@@ -16,6 +16,7 @@ services:
       interval: 8s
       retries: 5
       start_period: 30s
+      timeout: 10s
   backend:
     image: docker_app-backend
     container_name: myback
