@@ -16,7 +16,7 @@ jobs:
             run: docker compose -f docker-compose.yml up -d  --build
           - name: wait for db
             run: |
-              until docker exec -it postgres pg_isready -U postgres; do
+              until docker exec -it mydb pg_isready -U postgres; do
                 echo "Waiting for bd to be ready to go"
                 sleep 2
               done
