@@ -9,7 +9,7 @@ jobs:
    
     steps:
           - name: clonar repo
-            uses: actions/checkout@v2
+            uses: actions/checkout@v3
           - name: ver conten repo
             run: ls -la
           - name: build and up docker
