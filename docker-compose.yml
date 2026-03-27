@@ -13,8 +13,9 @@ services:
       - backend_net
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
-      interval: 5s
+      interval: 8s
       retries: 5
+      start_period: 30s
   backend:
     image: docker_app-backend
     container_name: myback
