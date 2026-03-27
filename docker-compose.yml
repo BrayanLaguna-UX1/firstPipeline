@@ -7,15 +7,16 @@ services:
     environment:
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: empresa
+      POSTGRES_USER: postgres
     volumes:
-      - postvol:/var/lib/postgresql/data
+      - postvolume:/var/lib/postgresql
     networks:
       - backend_net
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
-      interval: 8s
+      interval: 15s
       retries: 5
-      start_period: 30s
+      start_period: 40s
       timeout: 10s
   backend:
     image: docker_app-backend
