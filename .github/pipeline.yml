@@ -3,10 +3,11 @@ on:
   push:
     branches:
       - main
-    jobs:
-      build:
-        runs-on: ubuntu-latest
-        steps:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+   
+    steps:
           - name: clonar repo
             uses: actions/checkout@v2
           - name: ver conten repo
@@ -21,3 +22,6 @@ on:
               done
           - name: see containers running
             run: docker ps
+          - name: test
+            run: curl http://localhost:5000
+            
