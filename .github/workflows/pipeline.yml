@@ -17,7 +17,7 @@ jobs:
           - name: wait for db
             run: |
               until docker exec mydb pg_isready -U postgres; do
-                echo "Waiting for bd to be ready to go"
+                echo "Waiting for bd to be ready to go and i am bryan"
                 sleep 2
               done
           - name: see containers running
