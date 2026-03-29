@@ -9,7 +9,7 @@ services:
       POSTGRES_DB: empresa
       POSTGRES_USER: postgres
     volumes:
-      - postgvolumen:/var/lib/postgresql
+      - postgrevolumen:/var/lib/postgresql
     networks:
       - backend_net
     healthcheck:
@@ -32,7 +32,7 @@ services:
       - frontend_net
 
 volumes:
-  postgvolumen:
+  postgrevolumen:
 
 networks:
   backend_net:

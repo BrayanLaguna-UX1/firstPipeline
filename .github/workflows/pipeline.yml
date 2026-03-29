@@ -26,4 +26,6 @@ jobs:
             run: sleep 20
           - name: test
             run: curl --retry 5 --retry-delay 3 http://localhost:5000
+          - name: test with pytest
+            run: docker exec myback pytest -v
             
