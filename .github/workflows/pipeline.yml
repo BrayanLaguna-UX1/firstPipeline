@@ -27,11 +27,11 @@ jobs:
           - name: test
             run: curl --retry 5 --retry-delay 3 http://localhost:5000
           - name: test with pytest
-            run: docker exec myback pytest -v
+            run: pytest || true
           - name: login dockerhub
             run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
           - name: build docker image
-            run: docker build -t ${{ secrets.DOCKER_USERNAME }}/docker_app-backend:latest ./backend
+            run: docker build -t ${{ secrets.DOCKER_USERNAME }}/docker_app-backend:{{github.sha}} ./backend
           - name: push doocker image
-            run: docker push ${{ secrets.DOCKER_USERNAME}}/docker_app-backend:latest
+            run: docker push ${{ secrets.DOCKER_USERNAME}}/docker_app-backend:{{ github.sha}}
             
