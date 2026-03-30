@@ -41,7 +41,7 @@ jobs:
         - name: save image
           run: docker save ${{secrets.DOCKER_USERNAME }}/docker_app-backend:${{ github.sha}} -o backend_image.tar
         - name: upload image
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
             name: backend_image
             path: backend_image.tar
@@ -50,7 +50,7 @@ jobs:
       needs: build
       steps:
         - name: download image
-          uses: actions/download-artifact@v3
+          uses: actions/download-artifact@v4
           with:
             name: backend_image
         - name: load the image
