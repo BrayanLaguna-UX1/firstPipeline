@@ -20,6 +20,7 @@ jobs:
                 echo "Waiting for bd to be ready to go and i am bryan"
                 sleep 2
               done
+          
           - name: see containers running
             run: docker ps
           - name: wait backend
